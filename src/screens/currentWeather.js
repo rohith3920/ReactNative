@@ -1,23 +1,35 @@
 import React from "react";
-import { SafeAreaView, View, Text, StyleSheet, StatusBar  } from "react-native";
-import { Feather } from '@expo/vector-icons';
+import { SafeAreaView, View, Text, StyleSheet, StatusBar } from "react-native";
+import { Feather } from "@expo/vector-icons";
+import RowText from "../components/RowText";
 
 const CurrentWeather = () => {
+  const { wrapper, container, temp, feels , highLowWrapper, highLow, bodyWrapper, description, message} = styles
   return (
-    <SafeAreaView style={styles.wrapper}>
-      <View style={styles.container}>
-      <Feather name="sun" size={100} color="black" />
-        <Text style={styles.temp}>6</Text>
-        <Text style={styles.feels}>Feels like 5</Text>
-        <View style={styles.highLowWrapper}>
-          <Text style={styles.highLow}>High: 8 </Text>
-          <Text style={styles.highLow}>Low: 6</Text>
-        </View>
+    <SafeAreaView style={wrapper}>
+      <View style={container}>
+        <Feather name="sun" size={100} color="black" />
+        <Text style={temp}>6</Text>
+        <Text style={feels}>Feels like 5</Text>
+        <RowText
+          messageOne={"High: 8"}
+          messageTwo={"Low : 6"}
+          containerStyles={highLowWrapper}
+          messageOneStyle={highLow}
+          messageTwoStyles={highLow}
+        />
       </View>
-      <View style={styles.bodyWrapper}>
+      <RowText
+        messageOne={"Its Sunny"}
+        messageTwo={"Its perfect  t-shirt weather"}
+        containerStyles={bodyWrapper}
+        messageOneStyle={description}
+        messageTwoStyles={message}
+      />
+      {/* <View style={styles.bodyWrapper}>
         <Text style={styles.description}>Its sunny</Text>
         <Text style={styles.message}>Its perfect t-shirt Weather</Text>
-      </View>
+      </View> */}
     </SafeAreaView>
   );
 };
@@ -31,7 +43,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    justifyContent:'center',
+    justifyContent: "center",
   },
   temp: {
     color: "black",
@@ -51,7 +63,7 @@ const styles = StyleSheet.create({
   bodyWrapper: {
     justifyContent: "flex-end",
     alignItems: "flex-start",
-    paddingLeft:25,
+    paddingLeft: 25,
     marginBottom: 40,
   },
   description: {
